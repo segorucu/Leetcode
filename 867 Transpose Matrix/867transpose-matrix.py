@@ -1,0 +1,10 @@
+class Solution:
+    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+        n = len(matrix)
+        m = len(matrix[0])
+        new = [n*[0] for _ in range(m)]
+        for i in range(n):
+            for j in range(m):
+                new[j][i] = matrix[i][j]
+
+        return new
