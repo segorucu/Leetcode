@@ -19,23 +19,21 @@ class Solution:
         def dfs(r,c):
             neighs = [(r+1,c),(r-1,c),(r,c+1),(r,c-1)]
             currsm = grid[r][c]
-            # print(currsm)
+            count = 1
             for nr, nc in neighs:
                 if valid(nr,nc) and (nr,nc) not in visited:
-                    currset.add((nr,nc))
                     visited.add((nr,nc))
-                    currsm += dfs(nr,nc)
-            return currsm
+                    a,b = dfs(nr,nc)
+                    currsm += a
+                    count += b
+            return currsm, count
 
         ans = 0
         for r in range(m):
             for c in range(n):
                 if (r,c) not in visited:
-                    currset = set()
-                    currset.add((r,c))
                     visited.add((r,c))
-                    currsm = dfs(r,c)
-                    # print(currset, currsm)
-                    ans += len(currset) * (sm - currsm)
+                    currsm, count = dfs(r,c)
+                    ans += count * (sm - currsm)
 
         return ans
