@@ -28,7 +28,4 @@ class Solution:
                     maxval = max(maxval,dfs(r,c))
 
 
-
-
-
         return maxval
