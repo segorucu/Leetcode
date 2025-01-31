@@ -37,8 +37,6 @@ class Solution:
         if len(groups.keys()) == 1:
             return min(m*n,ans)
 
-        for group in groups:
-            print(len(groups[group]))
 
         for r in range(m):
             for c in range(n):
@@ -56,8 +54,3 @@ class Solution:
                     ans = max(ans, tmp + 1)
 
         return ans
-
-
-# [0,1,0],
-# [1,0,1],
-# [1,0,0]]
