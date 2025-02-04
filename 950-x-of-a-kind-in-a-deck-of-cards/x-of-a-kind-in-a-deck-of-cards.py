@@ -9,13 +9,8 @@ class Solution:
         if len(freqset) == 1:
             return True
 
-        minval = min(freqset)
-        for div in range(2,minval+1):
-            for val in freqset:
-                if val % div:
-                    break
-            else:
-                return True
+        return math.gcd(*freqset) > 1
+
         
         return False
          
