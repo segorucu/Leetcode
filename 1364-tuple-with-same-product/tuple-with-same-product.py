@@ -6,13 +6,12 @@ class Solution:
         n = len(nums)
         for i in range(n):
             for j in range(i+1,n):
-                mp[nums[i]*nums[j]] += 1
+                mp[nums[i]*nums[j]] += 2
 
         ans = 0
         for k,v in mp.items():
-            if v == 1:
+            if v <= 2:
                 continue
-            totpairs = 2*v
-            ans += totpairs * (totpairs - 2)
+            ans += v * (v - 2)
 
         return ans
