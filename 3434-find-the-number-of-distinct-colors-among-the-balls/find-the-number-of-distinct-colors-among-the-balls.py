@@ -21,9 +21,7 @@ class Solution:
             ind, col = q[0], q[1]
             if ind not in colours:
                 self.add(counter, col)
-            elif colours[ind] == col:
-                pass
-            else:
+            elif colours[ind] != col:
                 prev = colours[ind]
                 self.remove(counter, prev)
                 self.add(counter, col)
