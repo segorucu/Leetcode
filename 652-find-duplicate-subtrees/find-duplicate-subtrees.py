@@ -36,7 +36,6 @@ class Solution:
             dfs(node.right)
 
         dfs(root)
-        print(counter)
         
         return ans
         
