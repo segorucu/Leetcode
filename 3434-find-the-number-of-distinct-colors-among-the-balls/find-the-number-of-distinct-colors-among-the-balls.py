@@ -1,4 +1,9 @@
 class Solution:
+    def remove(self, counter, prev):
+        counter[prev] -= 1
+        if counter[prev] == 0:
+            del counter[prev]
+
     def queryResults(self, limit: int, queries: List[List[int]]) -> List[int]:
         
         colours = {}
@@ -17,9 +22,7 @@ class Solution:
                 pass
             else:
                 prev = colours[ind]
-                counter[prev] -= 1
-                if counter[prev] == 0:
-                    del counter[prev]
+                self.remove(counter, prev)
                 if col in counter:
                     counter[col] += 1
                 else:
