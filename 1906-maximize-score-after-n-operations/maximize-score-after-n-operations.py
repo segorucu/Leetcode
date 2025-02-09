@@ -15,10 +15,7 @@ class Solution:
                     if ((mask & (1<<i)) | (mask & (1<<j))):
                         continue
                     score = math.gcd(nums[i],nums[j])
-                    oldmask = mask
-                    mask = mask | (1 << i) | (1 << j)
-                    ret = max(ret,dp(mask,op+1) + op*score)
-                    mask = oldmask
+                    ret = max(ret,dp(mask | (1 << i) | (1 << j),op+1) + op*score)
             return ret
 
         return dp(0,1)
