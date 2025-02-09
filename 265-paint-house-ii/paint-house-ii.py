@@ -6,17 +6,16 @@ class Solution:
         k = len(costs[0])
 
         @cache
-        def dp(i,mask):
+        def dp(i,lastk):
             if i == n:
                 return 0
 
             ans = inf
             for color in range(k):
-                if (mask & (1 << color)):
+                if color == lastk:
                     continue
                 
-                newmask = 1 << color
-                ans = min(ans, dp(i+1,newmask) + costs[i][color])
+                ans = min(ans, dp(i+1,color) + costs[i][color])
             return ans
             
-        return dp(0,0)
+        return dp(0,-1)
