@@ -12,7 +12,7 @@ class Solution:
         n = len(nums)
         ans = []
         for q in queries:
-            ind = bisect_right(nums,q)
+            ind = bisect_left(nums,q)
             if ind == n or ind == 0:
                 cost = abs(n * q - prefix[-1])
                 ans.append(cost)
