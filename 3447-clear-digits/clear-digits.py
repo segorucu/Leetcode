@@ -1,15 +1,11 @@
 class Solution:
     def clearDigits(self, s: str) -> str:
         
-        s = list(s)
-        r = 0
-        while r < len(s):
-            if s[r].isdigit():
-                s.pop(r)
-                s.pop(r-1)
-                r -= 1
+        stack = []
+        for a in s:
+            if a.isdigit():
+                stack.pop()
             else:
-                r += 1 
+                stack.append(a)
 
-
-        return "".join(s)
+        return "".join(stack)
