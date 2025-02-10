@@ -32,7 +32,6 @@ class Solution:
 
         ans = inf
         for i in range(n):
-            if i in graph:  # Process only existing nodes
-                ans = min(ans, bfs(i))
+            ans = min(ans, bfs(i))
 
         return ans if ans != inf else -1
