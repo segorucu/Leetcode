@@ -7,7 +7,8 @@ class Solution:
                 prev = 0
                 sm = 0
                 for end in arr:
-                    sm += int(num[prev:end])
+                    if len(num[prev:end]):
+                        sm += int(num[prev:end])
                     prev = end
                 arr.pop()
                 if sm == goal:
