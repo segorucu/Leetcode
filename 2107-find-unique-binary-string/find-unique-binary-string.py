@@ -6,17 +6,22 @@ class Solution:
 
         def backtrack(num):
             if len(num) == n:
+                num = "".join(num)
                 if num in nums:
                     return None
                 else:
                     return num
 
-            res = backtrack(num+"0")
+            num.append("0")
+            res = backtrack(num)
+            num.pop()
             if res is not None:
                 return res
-            res = backtrack(num+"1")
+            num.append("1")
+            res = backtrack(num)
+            num.pop()
             if res is not None:
                 return res
 
-        res = backtrack("")
+        res = backtrack([])
         return res
