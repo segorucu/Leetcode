@@ -7,9 +7,7 @@ public:
         int n = blocks.size();
         for (int i = 0; i < n; ++i) {
             if (blocks[i] == 'W') ++whites;
-            if (i >= k) {
-                if (blocks[i-k] == 'W') --whites;
-            }  
+            if (i >= k and blocks[i-k] == 'W') --whites;
             if (i >= k-1) ans = min(ans,whites);
         }
 
