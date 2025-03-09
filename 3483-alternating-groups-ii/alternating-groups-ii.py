@@ -4,9 +4,9 @@ class Solution:
 
         ans = 0
         n = len(colors)
-        prev = None
+        prev = -1
         for i in range(n+k-1):
-            if not prev:
+            if prev < 0:
                 prev = 1
             else:
                 if colors[i%n] != colors[(i-1)%n]:
@@ -15,7 +15,6 @@ class Solution:
                     if prev >= k:
                         ans += prev - k + 1
                     prev = 1
-            # print(i%n,prev)
         if prev >= k:
             ans += prev- k + 1
 
