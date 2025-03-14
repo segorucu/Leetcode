@@ -12,12 +12,12 @@ public:
             return false;
         };
 
-        long long l = 1;
-        long long r = accumulate(candies.begin(), candies.end(), 0LL) / k;
+        int l = 1;
+        int r = accumulate(candies.begin(), candies.end(), 0LL) / k;
         int res = 0;
 
         while (l <= r) {
-            long long mid = (l+r) / 2;
+            int mid = (l+r) / 2;
             if (good(mid)) {
                 res = mid;
                 l = mid+1;
