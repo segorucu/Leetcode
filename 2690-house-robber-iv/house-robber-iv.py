@@ -18,7 +18,7 @@ class Solution:
             for i in range(2,n):
                 dp[i] = max(dp[i-2]+int(nums[i] <= val),dp[i-1])
                     
-            return max(dp) >= k
+            return dp[-1] >= k
 
 
         res = 0
