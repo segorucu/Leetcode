@@ -8,17 +8,15 @@ class Solution:
 
         def good(val):
             dp = n * [0]
-            for i in range(n):
-                if i < 2:
-                    if nums[i] <= val:
-                        dp[i] = 1
-                    if i == 1:
-                        dp[1] = max(dp[0],dp[1])
-                else:
-                    add = 0
-                    if nums[i] <= val:
-                        add += 1
-                    dp[i] = max(dp[i-2]+add,dp[i-1])
+            if nums[0] <= val:
+                dp[0] = 1
+                if n == 1:
+                    return dp[0] >= k
+                dp[1] = 1
+            if nums[1] <= val:
+                dp[1] = 1
+            for i in range(2,n):
+                dp[i] = max(dp[i-2]+int(nums[i] <= val),dp[i-1])
                     
             return max(dp) >= k
 
