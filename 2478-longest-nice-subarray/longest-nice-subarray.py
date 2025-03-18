@@ -22,11 +22,9 @@ class Solution:
                     return True
             return False
 
-        def moveright(num):
-            for digit in range(maxdigit):
-                mask = 1 << digit
-                if (num & mask):
-                    currmp[digit] -= 1
+        def moveright(i):
+            for digit in counter[i]:
+                currmp[digit] -= 1
 
         def addright(num):
             for digit in range(maxdigit):
@@ -38,7 +36,7 @@ class Solution:
         l = 0
         for r in range(n):
             while check(r):
-                moveright(nums[l])
+                moveright(l)
                 l += 1
             addright(nums[r])
             ans = max(ans, r-l+1)
