@@ -9,7 +9,7 @@ class Solution:
         #         if (num & mask):
         #             counter[i].append(digit)
     
-        maxdigit = 32
+        maxdigit = 30
         n = len(nums)
         currmp = collections.defaultdict(int)
 
