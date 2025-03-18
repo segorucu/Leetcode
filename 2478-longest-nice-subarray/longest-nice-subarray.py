@@ -26,11 +26,9 @@ class Solution:
             for digit in counter[i]:
                 currmp[digit] -= 1
 
-        def addright(num):
-            for digit in range(maxdigit):
-                mask = 1 << digit
-                if num & mask:
-                    currmp[digit] += 1
+        def addright(i):
+            for digit in counter[i]:
+                currmp[digit] += 1
 
         ans = 0
         l = 0
@@ -38,7 +36,7 @@ class Solution:
             while check(r):
                 moveright(l)
                 l += 1
-            addright(nums[r])
+            addright(r)
             ans = max(ans, r-l+1)
 
         
