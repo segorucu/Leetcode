@@ -10,35 +10,33 @@ class Solution:
                 return True
         return False
 
-    def longestNiceSubarray(self, nums: List[int]) -> int:
-        
-        maxdigit = 0
+    def moveright(self,i):
+        for digit in self.counter[i]:
+            self.currmp[digit] -= 1
+
+    def addright(self,i):
+        for digit in self.counter[i]:
+            self.currmp[digit] += 1
+
+    def buildmp(self,nums):
         for i,num  in enumerate(nums):
             for digit in range(30):
                 mask = 1 << digit
                 if (num & mask):
                     self.counter[i].append(digit)
-                    maxdigit = max(maxdigit, digit)
+
+    def longestNiceSubarray(self, nums: List[int]) -> int:
+        
+        self.buildmp(nums)
     
-        maxdigit += 1
         n = len(nums)
-
-        def moveright(i):
-            for digit in self.counter[i]:
-                self.currmp[digit] -= 1
-
-        def addright(i):
-            for digit in self.counter[i]:
-                self.currmp[digit] += 1
-
         ans = 0
         l = 0
         for r in range(n):
             while self.check(r):
-                moveright(l)
+                self.moveright(l)
                 l += 1
-            addright(r)
+            self.addright(r)
             ans = max(ans, r-l+1)
 
-        
         return ans
