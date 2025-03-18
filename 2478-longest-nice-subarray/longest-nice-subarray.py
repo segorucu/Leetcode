@@ -1,39 +1,40 @@
 class Solution:
+
+    def __init__(self):
+        self.counter = collections.defaultdict(list)
+        self.currmp = collections.defaultdict(int)
+
+    def check(self, i):
+        for digit in self.counter[i]:
+            if self.currmp[digit] > 0:
+                return True
+        return False
+
     def longestNiceSubarray(self, nums: List[int]) -> int:
         
-        counter = collections.defaultdict(list)
-
         maxdigit = 0
         for i,num  in enumerate(nums):
             for digit in range(30):
                 mask = 1 << digit
                 if (num & mask):
-                    counter[i].append(digit)
+                    self.counter[i].append(digit)
                     maxdigit = max(maxdigit, digit)
     
         maxdigit += 1
         n = len(nums)
-        currmp = collections.defaultdict(int)
-
-
-        def check(i):
-            for digit in counter[i]:
-                if currmp[digit] > 0:
-                    return True
-            return False
 
         def moveright(i):
-            for digit in counter[i]:
-                currmp[digit] -= 1
+            for digit in self.counter[i]:
+                self.currmp[digit] -= 1
 
         def addright(i):
-            for digit in counter[i]:
-                currmp[digit] += 1
+            for digit in self.counter[i]:
+                self.currmp[digit] += 1
 
         ans = 0
         l = 0
         for r in range(n):
-            while check(r):
+            while self.check(r):
                 moveright(l)
                 l += 1
             addright(r)
