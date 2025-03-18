@@ -1,23 +1,24 @@
 class Solution:
     def longestNiceSubarray(self, nums: List[int]) -> int:
         
-        # counter = collections.defaultdict(list)
+        counter = collections.defaultdict(list)
 
-        # for i,num  in enumerate(nums):
-        #     for digit in range(30):
-        #         mask = 1 << digit
-        #         if (num & mask):
-        #             counter[i].append(digit)
+        maxdigit = 0
+        for i,num  in enumerate(nums):
+            for digit in range(30):
+                mask = 1 << digit
+                if (num & mask):
+                    counter[i].append(digit)
+                    maxdigit = max(maxdigit, digit)
     
-        maxdigit = 30
+        maxdigit += 1
         n = len(nums)
         currmp = collections.defaultdict(int)
 
 
-        def check(num):
-            for digit in range(maxdigit):
-                mask = 1 << digit
-                if (num & mask) and currmp[digit] > 0:
+        def check(i):
+            for digit in counter[i]:
+                if currmp[digit] > 0:
                     return True
             return False
 
@@ -36,7 +37,7 @@ class Solution:
         ans = 0
         l = 0
         for r in range(n):
-            while check(nums[r]):
+            while check(r):
                 moveright(nums[l])
                 l += 1
             addright(nums[r])
