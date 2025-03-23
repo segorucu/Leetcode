@@ -8,8 +8,6 @@ class Solution:
             graph[a].append(b)
             graph[b].append(a)
 
-        # print(graph)
-
         def dfs(i):
             for j in graph[i]:
                 if j in visited:
@@ -30,7 +28,6 @@ class Solution:
             curr.add(i)
             dfs(i)
             n = len(curr)
-            # print(curr,n)
             for k in curr:
                 if len(graph[k]) != n-1:
                     break
