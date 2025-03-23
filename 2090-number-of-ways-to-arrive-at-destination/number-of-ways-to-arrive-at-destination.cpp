@@ -1,15 +1,15 @@
 class Solution {
 public:
     int countPaths(int n, vector<vector<int>>& roads) {
-        unordered_map <long long, vector<tuple<long long,long long>>> graph;
+        unordered_map <int, vector<tuple<int,long long>>> graph;
         vector<long long> distance(n, LLONG_MAX);
-        vector<long long> dp(n,0);
+        vector<int> dp(n,0);
         distance[0] = 0;
         dp[0] = 1;
 
         for (const auto&road: roads){
-            long long u = road[0];
-            long long v = road[1];
+            int u = road[0];
+            int v = road[1];
             long long w = road[2];
             graph[u].push_back({v,w});
             graph[v].push_back({u,w});
@@ -21,9 +21,9 @@ public:
         return dp[n-1];
     }
 
-    void dijkstra(int n, vector<long long> &distance, vector<long long> &dp, unordered_map <long long, vector<tuple<long long,long long>>> &graph){
+    void dijkstra(int n, vector<long long> &distance, vector<int> &dp, unordered_map <int, vector<tuple<int,long long>>> &graph){
 
-        priority_queue<tuple<long long, long long>, vector<tuple<long long, long long>>, greater<>> minHeap;
+        priority_queue<tuple<long long, int>, vector<tuple<long long, int>>, greater<>> minHeap;
         minHeap.push({0,0});
         long long MOD = pow(10,9)+7;
 
