@@ -2,19 +2,18 @@ class Solution:
     def dijkstra(self, n, s, graph):
         distance = n * [float("inf")]
         distance[s] = 0
-        heap = [(s,0)]
+        heap = [(0, s)]
         visited = set()
         while heap:
             # print(heap)
-            node, dist = heappop(heap)
+            dist, node = heappop(heap)
             visited.add(node)
             for neigh, weight in graph[node]:
-                # if neigh in visited:
-                #     continue
-                temp_distance = dist + weight
-                if temp_distance < distance[neigh]:
-                    distance[neigh] = temp_distance
-                    heappush(heap,(neigh,temp_distance))
+                if neigh not in visited:
+                    temp_distance = dist + weight
+                    if temp_distance < distance[neigh]:
+                        distance[neigh] = temp_distance
+                        heappush(heap,(temp_distance,neigh))
 
         return distance
 
