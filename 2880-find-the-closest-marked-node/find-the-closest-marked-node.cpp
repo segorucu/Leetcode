@@ -14,8 +14,7 @@ public:
         for (auto i: marked){
             ans = min(ans, distance[i]);
         }
-        if (ans == INT_MAX) return -1;
-        return ans;
+        return (ans == INT_MAX) ? -1: ans;
     }
 
     void dijkstra(int n, int s, unordered_map<int,vector<tuple<int,int>>> &graph, vector<int> &distance){
