@@ -9,9 +9,6 @@ public:
         }
 
         dijkstra(n, s, graph, distance);
-        // for (auto i = 0; i < distance.size(); ++i){
-        //     cout << i << " " << distance[i] << endl;
-        // }
 
         int ans = INT_MAX;
         for (auto i: marked){
