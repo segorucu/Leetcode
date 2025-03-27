@@ -16,7 +16,7 @@ class Solution:
                     i += 1
                 stack.append("".join(curr))
 
-        s = stack.copy()
+        s = stack
 
         def multiplyanddivide(s):
             n = len(s)
