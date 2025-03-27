@@ -1,22 +1,20 @@
 class Solution:
     def calculate(self, s: str) -> int:
         
+        s = s.replace(" ","")
         s = list(s)
         stack = []
         i = 0
         while i < len(s):
-            if s[i] == " ":
+            if not s[i].isnumeric():
+                stack.append(s[i])
                 i += 1
             else:
-                if not s[i].isnumeric():
-                    stack.append(s[i])
+                curr = []
+                while i < len(s) and s[i].isnumeric():
+                    curr.append(s[i])
                     i += 1
-                else:
-                    curr = []
-                    while i < len(s) and s[i].isnumeric():
-                        curr.append(s[i])
-                        i += 1
-                    stack.append("".join(curr))
+                stack.append("".join(curr))
 
         s = stack.copy()
 
