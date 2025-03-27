@@ -12,11 +12,11 @@ class Solution:
                     stack.append(s[i])
                     i += 1
                 else:
-                    curr = ""
+                    curr = []
                     while i < len(s) and s[i].isnumeric():
-                        curr += s[i]
+                        curr.append(s[i])
                         i += 1
-                    stack.append(curr)
+                    stack.append("".join(curr))
 
         s = stack.copy()
 
