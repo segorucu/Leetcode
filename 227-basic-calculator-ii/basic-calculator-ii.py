@@ -31,39 +31,33 @@ class Solution:
                     stack.append(s[i])
                     i += 1
                 else:
+                    left = stack.pop()
+                    right = s[i+1]
                     if s[i] == "*":
-                        left = stack.pop()
-                        right = s[i+1]
                         curr = int(left) * int(right)
-                        stack.append(curr)
-                        i += 2
                     else:
-                        left = stack.pop()
-                        right = s[i+1]
                         curr = int(left) // int(right)
-                        stack.append(curr)
-                        i += 2
+                    stack.append(curr)
+                    i += 2
             return stack
 
         s = multiplyanddivide(s)
 
-       
         stack = []
         i = 0
+        if s[i] == "-":
+            sm = -int(s[i+1])
+            i += 2
+        else:
+            sm = int(s[i])
+            i += 1
+            
         n = len(s)
         while i < n:
-            if i == 0:
-                if s[i] == "-":
-                    sm = -int(s[i+1])
-                    i += 2
-                else:
-                    sm = int(s[i])
-                    i += 1
+            if s[i] == "+":
+                sm += int(s[i+1])
             else:
-                if s[i] == "+":
-                    sm += int(s[i+1])
-                else:
-                    sm -= int(s[i+1])
-                i += 2
+                sm -= int(s[i+1])
+            i += 2
 
         return sm
