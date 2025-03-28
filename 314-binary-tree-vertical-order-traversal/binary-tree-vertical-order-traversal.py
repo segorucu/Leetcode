@@ -20,8 +20,8 @@ class Solution:
 
 
         dfs(root, 0, 0)
-        if maxcols[0] == -1:
-            return []
+        # if maxcols[0] == -1:
+        #     return []
 
         cdict = defaultdict(list)
         for r in sorted(rcdict.keys()):
