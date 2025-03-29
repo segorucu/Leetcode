@@ -11,19 +11,6 @@ class Node:
 class Solution:
     def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
 
-        def dfs(node,ref):
-            if not node:
-                return False
-            if node.val == ref.val:
-                return True
-
-            return dfs(node.left,ref) or dfs(node.right,ref)
-
-        if dfs(p,q):
-            return p
-        if dfs(q,p):
-            return q
-
         visited = set()
         queue = deque()
         queue.append(p)
