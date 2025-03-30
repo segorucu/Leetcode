@@ -13,23 +13,35 @@ class Solution:
         if not root:
             return None
 
-        graph = {}
-        def dfs(root):
+        def flatten(root):
             if not root:
-                return 
-            
-            graph[root.val] = root
-            dfs(root.left)
-            dfs(root.right)
+                return None, None
 
-        dfs(root)
-        
-        keys = list(sorted(graph.keys()))
-        n = len(keys)
-        for i,key in enumerate(keys):
-            graph[key].left = graph[keys[(i-1)%n]]
-            graph[key].right = graph[keys[(i+1)%n]]
+            tail1, head1 = flatten(root.left)
+            if head1:
+                head1.right = root
+                root.left = head1
+            tail2, head2 = flatten(root.right)
+            if tail2:
+                root.right = tail2
+                tail2.left = root
+
+            if tail1:
+                tail = tail1
+            else:
+                tail = root
+
+            if head2:
+                head = head2
+            else:
+                head = root
+
+            return tail, head
 
 
-        return graph[keys[0]]
+        tail, head = flatten(root)
+        tail.left = head
+        head.right = tail
+    
+        return tail
         
