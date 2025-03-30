@@ -46,25 +46,16 @@ class Solution:
 
         def recurse(nestedList,depth):
             sm = 0
-            # print(depth,type(nestedList))
-            if isinstance(nestedList, list):
-                for data in nestedList:
-                    sm += recurse(data,depth)
-            elif nestedList.isInteger():
-                sm = nestedList.getInteger() * depth
-            else:
-                nestedList = nestedList.getList()
-                for data in nestedList:
-                    sm += recurse(data,depth+1)
+            for nested in nestedList:
+                if nested.isInteger():
+                    sm += nested.getInteger() * depth
+                else:
+                    sm += recurse(nested.getList(),depth+1)
             return sm
 
     
-
         sm = recurse(nestedList,1)
-        # data = nestedList[0]
-        # print(type(data))
-        # for a in data:
-        #     print(a)
+
 
 
         return sm
