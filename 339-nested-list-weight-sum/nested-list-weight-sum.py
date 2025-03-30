@@ -54,9 +54,6 @@ class Solution:
             return sm
 
     
-        sm = recurse(nestedList,1)
+        return recurse(nestedList,1)
 
-
-
-        return sm
         
