@@ -6,10 +6,11 @@ class Solution:
         larger = []
         smaller = []
         for x,y in pairwise(weights):
-            larger.append(x+y)
-            smaller.append(x+y)
+            heappush(larger,-x-y)
+            heappush(smaller,x+y)
+            while len(larger) > k -1:
+                heappop(larger)
+                heappop(smaller)
 
-        larger.sort(reverse=True)
-        smaller.sort()
-        return sum(larger[0:k-1]) - sum(smaller[0:k-1])
+        return sum(larger) + sum(smaller)
 
