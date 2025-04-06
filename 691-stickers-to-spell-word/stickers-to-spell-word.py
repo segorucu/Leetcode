@@ -14,9 +14,10 @@ class Solution:
             if not target:
                 return 0
 
-            counter = Counter(target)
+            
             ops = inf
             for i,st in enumerate(stickers):
+                counter = Counter(target)
                 counter2 = Counter(st)
                 intersection = counter & counter2
                 if not intersection:
@@ -28,7 +29,6 @@ class Solution:
                 txt = "".join(txt)
                 if (dp(txt)+1) < ops:
                     ops = dp(txt) + 1
-                counter += intersection
             return ops
 
         target = "".join(sorted(list(target)))
