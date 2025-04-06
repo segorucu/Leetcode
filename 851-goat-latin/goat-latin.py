@@ -4,12 +4,13 @@ class Solution:
         vowels = {'a', 'e', 'i', 'o', 'u', "A", "E", "I", "O", "U"}
 
         sentence = sentence.split()
-        ans = []
-        for i,word in enumerate(sentence):
+        n = len(sentence)
+        for i in range(n):
+            word = sentence[i]
             if word[0] in vowels:
                 curr = word[0:] + "ma" + (i+1) * "a"
             else:
                 curr = word[1:] + word[0] + "ma" + (i+1) * "a"
-            ans.append(curr)
+            sentence[i] = curr
 
-        return " ".join(ans)
+        return " ".join(sentence)
