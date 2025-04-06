@@ -15,19 +15,13 @@ class Solution:
                     if valid(nr,nc) and board[nr][nc] in {"M","X"}:
                         mineadjacent[(r,c)] += 1
 
-        def revealmine(r,c):
-            board[r][c] = "X"
-
-        def converttonum(r,c):
-            board[r][c] = str(mineadjacent[(r,c)])
-
         if board[click[0]][click[1]] in {"M"}:
-            revealmine(*click)
+            board[click[0]][click[1]] = "X"
             return board
 
         def recurse(r,c):
             if mineadjacent[(r,c)] > 0:
-                converttonum(r,c)
+                board[r][c] = str(mineadjacent[(r,c)])
                 return
 
             board[r][c] = "B"
