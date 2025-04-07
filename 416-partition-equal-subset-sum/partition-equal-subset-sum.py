@@ -14,7 +14,12 @@ class Solution:
                     return True
                 return False
 
-            return dp(i+1, sm +nums[i]) or dp(i+1, sm)
+            one = dp(i+1, sm +nums[i])
+            if one: return True
+            two = dp(i+1, sm)
+
+            return one or two
+
 
 
         return dp(0,0)
