@@ -9,12 +9,13 @@ class Solution:
             cnt = 0
             for row in range(n):
                 col = bisect_right(matrix[row],mid)
-                if col == n:
-                    cnt += n
-                elif matrix[row][col] == mid:
-                    cnt += col + 1
-                else:
-                    cnt += col
+                cnt += col
+                # if col == n:
+                #     cnt += n
+                # elif matrix[row][col] == mid:
+                #     cnt += col + 1
+                # else:
+                #     cnt += col
             return cnt >= k
 
         res = 0
