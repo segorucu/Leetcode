@@ -52,10 +52,6 @@ class Solution:
                 else:
                     removed += 1
 
-        for i in range(n):
-            BobUnion.find(i)
-            AliceUnion.find(i)
-            BothUnion.find(i)
 
         for u,lst in Alice.items():
             for v in lst:
@@ -81,8 +77,6 @@ class Solution:
             if AliceUnion.par[i] == BobUnion.par[i]:
                 BothUnion.par[i] = AliceUnion.par[i]
             visited.add(BothUnion.par[i])
-
-        # print(BobUnion.par)
 
         if len(visited) > 1:
             return -1
