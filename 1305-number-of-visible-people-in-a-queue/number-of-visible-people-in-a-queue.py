@@ -13,9 +13,3 @@ class Solution:
             heappush(hp,(h,i))
 
         return count
-
-        # i = 5
-        # count = 8
-        # hp = [11]
-        
-        
