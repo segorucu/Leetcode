@@ -14,5 +14,5 @@ class Solution:
 
         keep = len(nums[i+1:])
         # print(n-keep)
-        return math.ceil((n-keep)/3)
+        return (n-keep-1)//3+1
 
