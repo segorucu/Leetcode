@@ -52,7 +52,6 @@ class Solution:
                 else:
                     removed += 1
 
-
         for u,lst in Alice.items():
             for v in lst:
                 if AliceUnion.find(u) != AliceUnion.find(v):
