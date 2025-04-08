@@ -3,13 +3,13 @@ class Solution:
         
         n = len(heights)
         count = n * [0]
-        hp = []
+        stack = []
         for i,h in enumerate(heights):
-            while hp and hp[0][0] <= h:
-                _, ind = heappop(hp)
+            while stack and stack[-1][0] <= h:
+                _, ind = stack.pop()
                 count[ind] += 1
-            if hp:
-                count[hp[0][1]] += 1
-            heappush(hp,(h,i))
+            if stack:
+                count[stack[-1][1]] += 1
+            stack.append((h,i))
 
         return count
