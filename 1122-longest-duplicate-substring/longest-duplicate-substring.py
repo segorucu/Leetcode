@@ -3,7 +3,7 @@ class Solution:
 
         def rabin_karp(text, length):
             d = 26  # number of characters in the input alphabet
-            q = 101111  # a prime number
+            q = pow(2,45)-1
             n = len(text)
             m = length
             h = pow(d, m - 1) % q
