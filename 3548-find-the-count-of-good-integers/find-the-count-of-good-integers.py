@@ -11,10 +11,10 @@ class Solution:
 
         fact = [factorial(i) for i in range(n+1)]
         def calc_combinations(counter):
-            if "0" in counter:
-                prod = (n-counter["0"]) * fact[n-1]
-            else:
-                prod = fact[n]
+            # if "0" in counter:
+            prod = (n-counter["0"]) * fact[n-1]
+            # else:
+            #     prod = fact[n]
             for k,v in counter.items():
                     prod = prod // fact[v]
             return prod
@@ -30,7 +30,7 @@ class Solution:
             if int(txt) % k == 0:
                 sortedtxt = "".join(sorted(txt))
                 visited.add(sortedtxt)
-        # print(visited)
+
         count = 0
         for txt in visited:
             counter = Counter(txt)
