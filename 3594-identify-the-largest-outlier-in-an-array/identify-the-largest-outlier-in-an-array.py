@@ -11,7 +11,8 @@ class Solution:
             if currsum % 2 == 0:
                 sumoftheremainder = currsum // 2
                 if sumoftheremainder in counter:
-                    if (sumoftheremainder == num and counter[num] >= 2) or (sumoftheremainder != num and counter[num] >= 1):
+                    if (sumoftheremainder == num and counter[num] >= 2)\
+                        or (sumoftheremainder != num and counter[num] >= 1):
                         maxval = max(maxval, num)
 
 
