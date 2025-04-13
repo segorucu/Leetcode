@@ -11,10 +11,7 @@ class Solution:
 
         fact = [factorial(i) for i in range(n+1)]
         def calc_combinations(counter):
-            # if "0" in counter:
             prod = (n-counter["0"]) * fact[n-1]
-            # else:
-            #     prod = fact[n]
             for k,v in counter.items():
                     prod = prod // fact[v]
             return prod
