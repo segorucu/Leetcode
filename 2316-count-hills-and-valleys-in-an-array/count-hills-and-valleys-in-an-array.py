@@ -4,20 +4,15 @@ class Solution:
 
         hill = 0
         valley = 0
-        decreasing = False
-        increasing = False
+        increasing = 0
         for l,r in pairwise(nums):
             if r > l:
-                if decreasing:
+                if increasing == -1:
                     valley += 1
-                    # print(l,r)
-                increasing = True
-                decreasing = False
+                increasing = 1
             if r < l:
-                if increasing:
+                if increasing == 1:
                     hill += 1
-                    # print(l,r)
-                decreasing = True
-                increasing = False
+                increasing = -1
 
         return valley + hill
