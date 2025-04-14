@@ -13,6 +13,8 @@ class Solution:
                     curr = weight
                 else:
                     curr += weight
+                if day > days:
+                    return False
             if curr:
                 day += 1
             return day <= days
