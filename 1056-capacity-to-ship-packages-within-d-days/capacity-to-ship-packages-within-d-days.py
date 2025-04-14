@@ -15,7 +15,6 @@ class Solution:
                     curr += weight
             if curr:
                 day += 1
-            # print(daily_capacity, day)
             return day <= days
         
         while left <= right:
