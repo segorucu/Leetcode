@@ -2,21 +2,16 @@ from collections import defaultdict
 import heapq
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
-        events = []
+        
+        intervals.sort()
+        rooms = 0
+        occupied = SortedList()
         for s,e in intervals:
-            events.append((s,"s"))
-            events.append((e,"e"))
-        events.sort()
+            occupied.add(e)
+            while occupied[0] <= s:
+                occupied.pop(0)
+            rooms = max(rooms, len(occupied))
+            
 
-        stack = 0
-        ans = 0
-        for i in range(len(events)):
-            time, state = events[i]
-            if state == "s":
-                stack += 1
-            else:
-                stack -= 1
-            ans = max(ans, stack)
-
-        return ans
+        return rooms
         
