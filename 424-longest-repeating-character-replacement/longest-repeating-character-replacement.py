@@ -18,11 +18,3 @@ class Solution:
                 r += 1
                 ans = max(ans, r-l)
         return ans
-
-        # n = 7
-        # ans = 4
-        # i = 0
-        # truth = "A"
-        # r = 7
-        # l = 5
-        # changed = 1
