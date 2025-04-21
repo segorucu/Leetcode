@@ -8,13 +8,11 @@ class Solution:
             curr += num
             minsm = min(minsm, curr)
 
-        n = len(differences)
-        ans = (n+1) * [0]
-        ans[0] = lower + abs(minsm)
-
+        curr = lower + abs(minsm)
+        maxval = curr
         for i,diff in enumerate(differences):
-            ans[i+1] = ans[i] + diff
+            curr += diff
+            maxval = max(maxval, curr)
 
-        maxval = max(ans)
 
         return max(0,upper - maxval + 1)
