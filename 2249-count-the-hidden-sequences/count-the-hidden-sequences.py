@@ -14,5 +14,4 @@ class Solution:
             curr += diff
             maxval = max(maxval, curr)
 
-
         return max(0,upper - maxval + 1)
