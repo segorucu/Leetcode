@@ -3,15 +3,12 @@ class Solution:
         
 
         minsm = 0
+        maxsm = 0
+        maxsm = 0
         curr = 0
         for num in differences:
             curr += num
             minsm = min(minsm, curr)
+            maxsm = max(maxsm, curr)
 
-        curr = lower + abs(minsm)
-        maxval = curr
-        for i,diff in enumerate(differences):
-            curr += diff
-            maxval = max(maxval, curr)
-
-        return max(0,upper - maxval + 1)
+        return max(0,upper - lower - maxsm + minsm + 1)
