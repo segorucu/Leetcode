@@ -16,7 +16,7 @@ class Solution:
         ans = 0
         for num in prefix: 
             ans += counter[(num-k) % modulo]
-            counter[num%modulo] += 1
+            counter[num % modulo] += 1
 
         return ans
 
