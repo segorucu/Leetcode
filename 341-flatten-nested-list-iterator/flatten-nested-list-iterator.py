@@ -24,8 +24,7 @@ class NestedIterator:
     def __init__(self, nestedList: [NestedInteger]):
         self.stack = []
         self.recurse(nestedList)
-        self.n = len(self.stack)
-        self.i = 0
+        self.stack.reverse()
 
     def recurse(self, arr):
         for curr in arr:
@@ -35,13 +34,11 @@ class NestedIterator:
                 self.recurse(curr.getList())  
     
     def next(self) -> int:
-        ret = self.stack[self.i]
-        self.i += 1
-        return ret
+        return self.stack.pop()
         
     
     def hasNext(self) -> bool:
-        return self.i < self.n
+        return self.stack
          
 
 # Your NestedIterator object will be instantiated and called as such:
