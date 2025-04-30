@@ -21,24 +21,21 @@
 #        """
 
 class NestedIterator:
+    def __init__(self, nestedList: [NestedInteger]):
+        self.stack = []
+        self.recurse(nestedList)
+        self.n = len(self.stack)
+        self.i = 0
+
     def recurse(self, arr):
-        ans = []
         for curr in arr:
             if curr.isInteger():
-                ans.append(curr.getInteger())
+                self.stack.append(curr.getInteger())
             else:
-                ans.extend(self.recurse(curr.getList()))
-        return ans
-
-    def __init__(self, nestedList: [NestedInteger]):
-        self.lst = self.recurse(nestedList)
-
-        self.n = len(self.lst)
-        self.i = 0
-        
+                self.recurse(curr.getList())  
     
     def next(self) -> int:
-        ret = self.lst[self.i]
+        ret = self.stack[self.i]
         self.i += 1
         return ret
         
