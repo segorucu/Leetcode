@@ -24,19 +24,14 @@ class NestedIterator:
     def recurse(self, arr):
         ans = []
         for curr in arr:
-            if curr._integer is not None:
-                ans.append(curr._integer)
+            if curr.isInteger():
+                ans.append(curr.getInteger())
             else:
-                ans.extend(self.recurse(curr._list))
+                ans.extend(self.recurse(curr.getList()))
         return ans
 
     def __init__(self, nestedList: [NestedInteger]):
-        self.lst = []
-        for curr in nestedList:
-            if curr._integer is not None:
-                self.lst.append(curr._integer)
-            else:
-                self.lst.extend(self.recurse(curr._list))
+        self.lst = self.recurse(nestedList)
 
         self.n = len(self.lst)
         self.i = 0
