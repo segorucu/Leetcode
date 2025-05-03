@@ -6,26 +6,25 @@ class Solution:
             occurences[top].add(i)
             occurences[bottom].add(i)
 
-        options = set()
         n = len(tops)
+        opt = None
         for k,v in occurences.items():
             if len(v) == n:
-                options.add(k)
+                opt = k
                 break
 
-        if len(options) == 0:
+        if not opt:
             return -1
 
         ans = n
-        for opt in options:
-            one = n
-            for top in tops:
-                if top == opt:
-                    one -= 1
-            two = n
-            for bottom in bottoms:
-                if bottom == opt:
-                    two -= 1
-            ans = min(ans,one,two)
+        one = n
+        for top in tops:
+            if top == opt:
+                one -= 1
+        two = n
+        for bottom in bottoms:
+            if bottom == opt:
+                two -= 1
+        ans = min(ans,one,two)
 
         return ans
