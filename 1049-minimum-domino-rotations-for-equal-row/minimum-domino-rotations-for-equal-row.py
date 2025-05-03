@@ -11,6 +11,7 @@ class Solution:
         for k,v in occurences.items():
             if len(v) == n:
                 options.add(k)
+                break
 
         if len(options) == 0:
             return -1
