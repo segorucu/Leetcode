@@ -36,7 +36,6 @@ class Solution:
         res = 0
         while left <= right:
             mid = (left + right) // 2
-            # print(left, right, mid, canfinish(mid))
             if canfinish(mid):
                 res = mid
                 left = mid + 1
