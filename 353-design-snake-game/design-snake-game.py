@@ -20,8 +20,6 @@ class SnakeGame:
         if nxt in self.queue:
             if nxt != self.queue[0]:   
                 return -1
-            elif nxt == self.queue[0] and self.food and nxt == self.food[0]:  
-                return -1
         if not self.valid(*nxt):
             return -1
 
