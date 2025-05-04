@@ -32,13 +32,10 @@ class SnakeGame:
             return -1
 
         self.queue.append(nxt)
-        self.occupied.add(nxt)
         if self.food and nxt == self.food[0]:
             self.food.popleft()
         else:
             prev = self.queue.popleft()
-            if prev in self.occupied:
-                self.occupied.remove(prev)
 
         return len(self.queue)-1
         
