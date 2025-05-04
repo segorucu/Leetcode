@@ -3,8 +3,6 @@ class SnakeGame:
     def __init__(self, width: int, height: int, food: List[List[int]]):
         self.queue = deque()
         self.queue.append((0,0))
-        self.occupied = set()
-        self.occupied.add((0,0))
         self.cols = width
         self.rows = height
         self.food = deque()
@@ -20,15 +18,11 @@ class SnakeGame:
         curr = self.queue[-1]
         nxt = (curr[0] + dr, curr[1] + dc)
         if nxt in self.queue:
-            # print(nxt, self.occupied, self.queue)
             if nxt != self.queue[0]:   
-                # print("h")
                 return -1
             elif nxt == self.queue[0] and self.food and nxt == self.food[0]:  
-                # print("h")
                 return -1
         if not self.valid(*nxt):
-            # print("h")
             return -1
 
         self.queue.append(nxt)
