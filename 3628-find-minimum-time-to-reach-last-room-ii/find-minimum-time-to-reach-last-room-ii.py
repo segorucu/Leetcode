@@ -19,7 +19,11 @@ class Solution:
 
         while hp:
             cost, r, c, step = heappop(hp)
-            visited.add((r,c))
+            if (r,c) in visited:
+                continue
+            if (r,c) == (m-1,n-1):
+                return cost
+            visited.add((r,c)) 
             neighs = [(r+1,c),(r-1,c),(r,c+1),(r,c-1)]
             for nr,nc in neighs:
                 if valid(nr,nc):
@@ -29,6 +33,3 @@ class Solution:
                         costmp[(nr,nc)] = dist
 
         return costmp[(m-1,n-1)]
-            
-
-        return 
