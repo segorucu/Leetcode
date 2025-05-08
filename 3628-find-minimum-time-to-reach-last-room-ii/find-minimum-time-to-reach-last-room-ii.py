@@ -1,8 +1,3 @@
-from enum import Enum
-class Parity(Enum):
-    even = 0
-    odd = 1
-
 class Solution:
     def minTimeToReach(self, moveTime: List[List[int]]) -> int:
         
