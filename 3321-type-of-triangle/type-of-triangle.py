@@ -1,17 +1,15 @@
 class Solution:
     def triangleType(self, nums: List[int]) -> str:
-        for i in range(3):
-            sm = 0
-            for j in range(3):
-                if i != j:
-                    sm += nums[j]
-            if sm <= nums[i]:
-                return "none"
+        counter = Counter(nums)
+        n = len(counter.keys())
+        maxval = max(nums)
+        sm = sum(nums)
+        if maxval >= sm / 2:
+            return "none"
             
-        unique = set(nums)
-        if len(unique) == 3:
+        if n == 3:
             return "scalene"
-        elif len(unique) == 2:
+        elif n == 2:
             return "isosceles"
         else:
             return "equilateral"
