@@ -20,11 +20,10 @@ class Solution:
             curr = curr.next
 
         curr = head
+        old_to_new[None] = None
         while curr:
-            if curr.next:
-                old_to_new[curr].next = old_to_new[curr.next]
-            if curr.random:
-                old_to_new[curr].random = old_to_new[curr.random]
+            old_to_new[curr].next = old_to_new[curr.next]
+            old_to_new[curr].random = old_to_new[curr.random]
             curr = curr.next
 
         return old_to_new[head]
