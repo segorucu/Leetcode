@@ -10,42 +10,22 @@ class Node:
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
 
-        mp = {}
-        values = []
-        curr = head
-        i = 0
-        while curr:
-            mp[curr] = i
-            values.append(curr.val)
-            curr = curr.next
-            i += 1
+        if not head:
+            return None
 
-        random = {}
-        i = 0
+        old_to_new = {}
         curr = head
         while curr:
+            old_to_new[curr] = Node(curr.val)
+            curr = curr.next
+
+        curr = head
+        while curr:
+            if curr.next:
+                old_to_new[curr].next = old_to_new[curr.next]
             if curr.random:
-                random[i] = mp[curr.random]
-            curr = curr.next
-            i += 1
-
-        # print(random)
-
-        Sentinel = Node(0)
-        curr = Sentinel
-        newmp = {}
-        for i in range(len(values)):
-            curr.next = Node(values[i])
-            curr = curr.next
-            newmp[i] = curr
-
-        curr = Sentinel
-        curr = curr.next
-        for i in range(len(values)):
-            if i in random:
-                curr.random = newmp[random[i]]
+                old_to_new[curr].random = old_to_new[curr.random]
             curr = curr.next
 
-
-        return Sentinel.next
+        return old_to_new[head]
         
