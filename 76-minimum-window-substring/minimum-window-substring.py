@@ -27,8 +27,8 @@ class Solution:
                 if r-l+1 < minlen[0]:
                     minlen[0] = r-l+1
                     ans[0] = s[l:r+1]
-                if s[l] in countert and counters[s[l]] == countert[s[l]]:
-                    break
+                # if s[l] in countert and counters[s[l]] == countert[s[l]]:
+                #     break
                 counters[s[l]] -= 1
                 l += 1
 
