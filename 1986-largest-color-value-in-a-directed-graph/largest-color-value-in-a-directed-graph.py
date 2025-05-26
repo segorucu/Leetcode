@@ -41,10 +41,6 @@ class Solution:
             return max(colormp[node])
 
 
-            path.remove(node)
-
-
-
         res = 0
         visit, path = set(), set()
         for i in range(n):
