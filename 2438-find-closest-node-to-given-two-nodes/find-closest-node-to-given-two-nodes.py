@@ -17,7 +17,6 @@ class Solution:
 
         graph1 = traverse(node1)
         graph2 = traverse(node2)
-        print(graph1,graph2)
 
         common = graph1.keys() & graph2.keys()
         if not common:
@@ -27,7 +26,6 @@ class Solution:
         selected = 10**6
         for key in common:
             dist = max(graph1[key], graph2[key])
-            # print(key, dist, maxdist)
             if dist < maxdist:
                 maxdist = dist
                 selected = key
@@ -35,6 +33,3 @@ class Solution:
                 selected = min(selected, key)
 
         return selected
-
-        # 5 -> 8 -> 1 -> 4 -> 9 -> 1
-        # 6 -> 4 -> 9 -> 1
