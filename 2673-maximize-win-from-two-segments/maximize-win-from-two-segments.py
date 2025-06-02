@@ -11,7 +11,7 @@ class Solution:
                 ans[r] = r - l + 1
             return ans
 
-        minval = max(calculate(2*k))
+        # minval = max(calculate(2*k))
         small = calculate(k)
         @cache
         def dp(i,remain):
@@ -25,4 +25,4 @@ class Solution:
 
         ans0 = dp(n-1,2)
 
-        return max(minval,ans0)
+        return ans0
