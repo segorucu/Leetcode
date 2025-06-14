@@ -16,18 +16,21 @@ class Solution:
                 break
             i += 1
 
+        def calcnum(arr):
+            arr.reverse()
+            mult = 1
+            curr = 0
+            for i in range(n):
+                curr += arr[i] * mult
+                mult *= 10
+            return curr
+
         def findmax(arr):
             for i in range(n):
                 if arr[i] == d1:
                     arr[i] = 9
 
-            arr.reverse()
-            mult = 1
-            minval = 0
-            for i in range(n):
-                minval += arr[i] * mult
-                mult *= 10
-            return minval
+            return calcnum(arr)
 
         def findmin(arr):
             d1 = arr[0]
@@ -35,13 +38,9 @@ class Solution:
                 if arr[i] == d1:
                     arr[i] = 0
 
-            arr.reverse()
-            mult = 1
-            minval = 0
-            for i in range(n):
-                minval += arr[i] * mult
-                mult *= 10
-            return minval
+            return calcnum(arr)
+
+            
 
         maxval = findmax(arr[:])
         minval = findmin(arr[:])
