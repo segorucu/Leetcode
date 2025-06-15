@@ -59,6 +59,5 @@ class Solution:
 
         a = findmax(arr[:])
         b = findmin(arr[:])
-        print(a,b)
 
         return a-b
