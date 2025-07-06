@@ -16,8 +16,8 @@ class FindSumPairs:
         
     def count(self, tot: int) -> int:
         cnt = 0
-        for num in self.nums1:
-            cnt += self.c2[tot-num]
+        for k, v in self.c1.items():
+            cnt += self.c2[tot-k] * v
         return cnt
         
 
