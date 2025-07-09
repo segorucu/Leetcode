@@ -14,7 +14,7 @@ class Solution:
                 startr = startTime[r+1]
             else:
                 startr = eventTime
-            while r - l >= k:
+            if r - l >= k:
                 meeting_time = meeting_time - (endTime[l] - startTime[l])
                 l += 1
             endl = endTime[l-1]
