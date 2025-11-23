@@ -13,8 +13,6 @@ class Solution:
                 ones.append(num)
             elif num % 3 == 2:
                 twos.append(num)
-        print(ones)
-        print(twos)
 
         while len(ones) > 3 and len(twos) > 3:
             sm += ones.pop()
@@ -33,7 +31,6 @@ class Solution:
 
         remainder = [0]
         arr = ones + twos
-        print(arr)
         def backtrack(i, currsm):
             if i == len(arr):
                 if currsm % 3 == 0:
