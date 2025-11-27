@@ -1,16 +1,16 @@
 class Solution:
     def maxSubarraySum(self, nums: List[int], k: int) -> int:
   
-        nums = [0] + nums
         sm = 0
-        modval = {}
+        modval = {0: 0}
         ans = -inf
         for i, num in enumerate(nums):
+            j = i+1
             sm += num
-            if i%k not in modval:
-                modval[i%k] = sm
+            if j%k not in modval:
+                modval[j%k] = sm
             else:
-                ans = max(ans, sm - modval[i%k])
-                modval[i%k] = min(modval[i%k], sm)
+                ans = max(ans, sm - modval[j%k])
+                modval[j%k] = min(modval[j%k], sm)
 
         return ans
