@@ -2,9 +2,11 @@ class Solution:
     def minimumOperations(self, nums: List[int]) -> int:
         
 
-        ans = 0
-        for num in nums:
-            if num % 3 > 0:
-                ans += 1
+        def dummy(x):
+            if x % 3 == 0:
+                return 0
+            else:
+                return 1
 
-        return ans
+        return sum(map(dummy,nums))
+        
