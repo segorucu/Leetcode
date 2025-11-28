@@ -6,5 +6,5 @@ class Solution:
             return x % 3 != 0
         
 
-        return len(list(filter(dummy,nums)))
+        return len(list(filter(lambda x: x%3 != 0,nums)))
         
