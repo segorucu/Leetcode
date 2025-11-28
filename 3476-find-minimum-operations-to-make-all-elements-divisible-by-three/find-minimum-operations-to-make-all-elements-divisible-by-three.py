@@ -3,10 +3,8 @@ class Solution:
         
 
         def dummy(x):
-            if x % 3 == 0:
-                return 0
-            else:
-                return 1
+            return x % 3 != 0
+        
 
-        return sum(map(dummy,nums))
+        return len(list(filter(dummy,nums)))
         
