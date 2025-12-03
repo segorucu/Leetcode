@@ -6,7 +6,7 @@ class Solution:
         for x, y in points:
             ypoints[y] += 1
 
-        print(ypoints)
+        # print(ypoints)
 
         permutations = 0
         ans = 0
@@ -16,7 +16,7 @@ class Solution:
                 ans += permutations * curr
                 ans = ans % MOD
                 permutations += curr
-                # permutations = permutations % MOD
+                permutations = permutations % MOD
 
 
         return ans 
