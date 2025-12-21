@@ -7,22 +7,23 @@
 class Solution:
     def longestConsecutive(self, root: Optional[TreeNode]) -> int:
 
-        finalans = [0]
+        # finalans = [0]
         def dfs(root):
             if not root:
-                return -10000000, 0 
+                return -10000000, 0, 0
 
             ans = 1
-            leftval, leftlen = dfs(root.left)
+            fleft = fright = 1
+            leftval, leftlen, fleft = dfs(root.left)
             if leftval == root.val + 1:
                 ans = max(ans, leftlen+1)
-            rightval, rightlen = dfs(root.right)
+            rightval, rightlen, fright = dfs(root.right)
             if rightval == root.val + 1:
                 ans = max(ans, rightlen+1)
-            finalans[0] = max(finalans[0], ans)
-            return root.val, ans
+
+            return root.val, ans, max(fleft, fright, ans)
 
 
-        dfs(root)[1]
-        return finalans[0]
+        return dfs(root)[2]
+        # return finalans[0]
         
