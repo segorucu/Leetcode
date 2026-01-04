@@ -5,7 +5,7 @@ class Solution:
         # print(counter)
         ans = 0
         for num, count in counter.items():
-            n = math.ceil(pow(num,0.5))
+            n = math.floor(pow(num,0.5))
             divisors = {1, num}
             for i in range(2,n+1):
                 if num % i == 0:
