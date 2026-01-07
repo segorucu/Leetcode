@@ -16,20 +16,18 @@ class Solution:
 
         totalsm = calc_sum(root)
         
-        ans = [0]
         def dfs(root):
             if not root:
-                return 0
+                return 0, 0
 
-            leftsm = dfs(root.left)
-            rightsm = dfs(root.right)
+            leftsm, leftans = dfs(root.left)
+            rightsm, rightans = dfs(root.right)
 
             opt1 = leftsm * (totalsm - leftsm)
             opt2 = rightsm * (totalsm - rightsm)
-            ans[0] = max(ans[0], opt1, opt2)
 
-            return leftsm + rightsm + root.val
+            return leftsm + rightsm + root.val, max(leftans, rightans, opt1, opt2)
 
-        dfs(root)
         MOD = 10**9+7
-        return ans[0] % MOD
+        return dfs(root)[1] % MOD
+        
